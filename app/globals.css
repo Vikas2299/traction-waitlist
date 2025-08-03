@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-earth-50 text-earth-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-earth-600 hover:bg-earth-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-earth-100 hover:bg-earth-200 text-earth-700 font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-earth-100 p-6;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #f8f6f3 0%, #e8f0f8 100%);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #8b6b5a 0%, #2d4a3d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+} 
