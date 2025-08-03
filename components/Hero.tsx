@@ -2,12 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { CreditCard, GraduationCap, TrendingUp, Users } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import WaitlistForm from './WaitlistForm'
 
 // Floating particles component
 const FloatingParticles = () => {
-  // Only render particles on client side
-  if (typeof window === 'undefined') {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
     return null
   }
 
@@ -106,7 +112,7 @@ const FloatingParticles = () => {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen gradient-bg pt-20 pb-16 relative">
+    <section id="waitlist" className="min-h-screen gradient-bg pt-20 pb-16 relative">
       <FloatingParticles />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

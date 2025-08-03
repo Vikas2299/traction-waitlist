@@ -1,9 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { addToWaitlist } from '@/lib/supabase'
 import { motion } from 'framer-motion'
-import { CheckCircle, AlertCircle } from 'lucide-react'
+import { CheckCircle, AlertCircle, Info } from 'lucide-react'
+
+interface FormErrors {
+  name?: string
+  email?: string
+  student_status?: string
+}
 
 export default function WaitlistForm() {
   const [formData, setFormData] = useState({
@@ -12,12 +18,71 @@ export default function WaitlistForm() {
     university: '',
     student_status: 'current' as 'current' | 'graduate' | 'prospective',
   })
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
+  // Real-time validation
+  useEffect(() => {
+    const newErrors: FormErrors = {}
+    
+    if (touched.name && !formData.name.trim()) {
+      newErrors.name = 'Name is required'
+    }
+    
+    if (touched.email) {
+      if (!formData.email.trim()) {
+        newErrors.email = 'Email is required'
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        newErrors.email = 'Please enter a valid email address'
+      }
+    }
+    
+    if (touched.student_status && !formData.student_status) {
+      newErrors.student_status = 'Please select your student status'
+    }
+    
+    setErrors(newErrors)
+  }, [formData, touched])
+
+  const handleBlur = (field: string) => {
+    setTouched(prev => ({ ...prev, [field]: true }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Mark all fields as touched to show validation errors
+    setTouched({
+      name: true,
+      email: true,
+      student_status: true
+    })
+    
+    // Check if form is valid
+    const newErrors: FormErrors = {}
+    if (!formData.name.trim()) newErrors.name = 'Name is required'
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address'
+    }
+    if (!formData.student_status) newErrors.student_status = 'Please select your student status'
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      // Focus on the first error field
+      const firstErrorField = Object.keys(newErrors)[0]
+      const errorElement = document.getElementById(firstErrorField) as HTMLInputElement
+      if (errorElement) {
+        errorElement.focus()
+        errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+      return
+    }
+    
     setIsSubmitting(true)
     setSubmitStatus('idle')
     setErrorMessage('')
@@ -33,9 +98,10 @@ export default function WaitlistForm() {
       
       setSubmitStatus('success')
       setFormData({ email: '', name: '', university: '', student_status: 'current' })
+      setTouched({})
+      setErrors({})
     } catch (error: any) {
       setSubmitStatus('error')
-      console.error('Waitlist submission error:', error)
       
       // Provide more specific error messages
       if (error.message?.includes('Supabase client not configured')) {
@@ -55,7 +121,17 @@ export default function WaitlistForm() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }))
+    }
   }
+
+  const isFormValid = formData.name.trim() && 
+                     formData.email.trim() && 
+                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
+                     formData.student_status
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -88,10 +164,23 @@ export default function WaitlistForm() {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              onBlur={() => handleBlur('name')}
               required
-              className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-earth-500 focus:border-transparent transition-colors"
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-earth-500 focus:border-transparent transition-colors ${
+                errors.name ? 'border-red-300 bg-red-50' : 'border-earth-200'
+              }`}
               placeholder="Enter your full name"
             />
+            {errors.name && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-600 text-sm mt-1 flex items-center gap-1"
+              >
+                <AlertCircle className="w-4 h-4" />
+                {errors.name}
+              </motion.p>
+            )}
           </div>
 
           <div>
@@ -104,10 +193,23 @@ export default function WaitlistForm() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              onBlur={() => handleBlur('email')}
               required
-              className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-earth-500 focus:border-transparent transition-colors"
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-earth-500 focus:border-transparent transition-colors ${
+                errors.email ? 'border-red-300 bg-red-50' : 'border-earth-200'
+              }`}
               placeholder="Enter your email address"
             />
+            {errors.email && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-600 text-sm mt-1 flex items-center gap-1"
+              >
+                <AlertCircle className="w-4 h-4" />
+                {errors.email}
+              </motion.p>
+            )}
           </div>
 
           <div>
@@ -134,33 +236,66 @@ export default function WaitlistForm() {
               name="student_status"
               value={formData.student_status}
               onChange={handleInputChange}
+              onBlur={() => handleBlur('student_status')}
               required
-              className="w-full px-4 py-3 border border-earth-200 rounded-lg focus:ring-2 focus:ring-earth-500 focus:border-transparent transition-colors"
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-earth-500 focus:border-transparent transition-colors ${
+                errors.student_status ? 'border-red-300 bg-red-50' : 'border-earth-200'
+              }`}
             >
               <option value="current">Current Student</option>
               <option value="graduate">Graduate</option>
               <option value="prospective">Prospective Student</option>
             </select>
+            {errors.student_status && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-600 text-sm mt-1 flex items-center gap-1"
+              >
+                <AlertCircle className="w-4 h-4" />
+                {errors.student_status}
+              </motion.p>
+            )}
           </div>
 
           {submitStatus === 'error' && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg"
+              className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg"
             >
-              <AlertCircle className="w-5 h-5 text-red-500" />
+              <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
               <span className="text-red-700 text-sm">{errorMessage}</span>
             </motion.div>
           )}
 
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isSubmitting || !isFormValid}
+            className="btn-primary w-full disabled:cursor-not-allowed"
           >
-            {isSubmitting ? 'Joining Waitlist...' : 'Join the Waitlist'}
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                Joining Waitlist...
+              </span>
+            ) : (
+              'Join the Waitlist'
+            )}
           </button>
+
+          {!isFormValid && Object.keys(touched).length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex items-start gap-2 p-3 bg-earth-50 border border-earth-200 rounded-lg"
+            >
+              <Info className="w-5 h-5 text-earth-600 mt-0.5 flex-shrink-0" />
+              <span className="text-earth-700 text-sm">
+                Please fill in all required fields to join the waitlist.
+              </span>
+            </motion.div>
+          )}
         </motion.form>
       )}
     </div>

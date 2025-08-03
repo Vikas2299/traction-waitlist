@@ -92,6 +92,7 @@ export default function Features() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-20 text-center"
+          id="how-it-works"
         >
           <h3 className="text-2xl font-bold text-earth-900 mb-8">
             How It Works
