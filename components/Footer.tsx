@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-earth-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -56,23 +56,7 @@ export default function Footer() {
               <li><a href="#features" className="text-earth-300 hover:text-white transition-colors">Features</a></li>
               <li><a href="#how-it-works" className="text-earth-300 hover:text-white transition-colors">How It Works</a></li>
               <li><a href="#waitlist" className="text-earth-300 hover:text-white transition-colors">Join Waitlist</a></li>
-              <li><a href="#" className="text-earth-300 hover:text-white transition-colors">Rewards Program</a></li>
-            </ul>
-          </motion.div>
-
-          {/* Company */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><a href="#about" className="text-earth-300 hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="text-earth-300 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-earth-300 hover:text-white transition-colors">Press</a></li>
-              <li><a href="#" className="text-earth-300 hover:text-white transition-colors">Partners</a></li>
+              <li><a href="#rewards" className="text-earth-300 hover:text-white transition-colors">Rewards Program</a></li>
             </ul>
           </motion.div>
         </div>
