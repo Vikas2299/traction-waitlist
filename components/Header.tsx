@@ -36,8 +36,14 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-earth-600 to-earth-forest rounded-lg mr-3"></div>
-            <span className="text-xl font-bold text-gradient">Traction</span>
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-earth-600 rounded-lg mr-3 flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                </svg>
+              </div>
+              <span className="text-xl font-bold text-earth-900">Traction</span>
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -47,6 +53,9 @@ export default function Header() {
             </a>
             <a href="#features" className="text-earth-forest hover:text-earth-800 transition-colors">
               Features
+            </a>
+            <a href="#rewards" className="text-earth-forest hover:text-earth-800 transition-colors">
+              Rewards
             </a>
             <a 
               href="#waitlist" 
@@ -88,6 +97,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
+              </a>
+              <a
+                href="#rewards"
+                className="text-earth-forest hover:text-earth-800 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Rewards
               </a>
               <a
                 href="#waitlist"

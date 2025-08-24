@@ -6,27 +6,27 @@ import { DollarSign, Users, TrendingUp, Target } from 'lucide-react'
 const stats = [
   {
     icon: DollarSign,
-    value: '$1.7T',
-    label: 'Student Loan Debt',
-    description: 'Total outstanding student loan debt in the U.S.'
+    value: '$870',
+    label: 'Avg. Monthly Spending',
+    description: 'Typical college student monthly expenses'
   },
   {
     icon: Users,
-    value: '44M+',
-    label: 'Student Borrowers',
-    description: 'Americans with student loan debt'
+    value: '30',
+    label: 'Monthly Transactions',
+    description: 'Average debit card transactions per month'
   },
   {
     icon: TrendingUp,
-    value: '$600B+',
-    label: 'Annual Education Spending',
-    description: 'Students spend on tuition and education annually'
+    value: '$15.75',
+    label: 'Monthly Round-Ups + Match',
+    description: 'Average monthly contribution to Tuition Vault'
   },
   {
     icon: Target,
-    value: '0%',
-    label: 'Current Rewards',
-    description: 'Traditional debit cards offer no rewards for education'
+    value: '$294.66',
+    label: 'Projected Year-End Balance',
+    description: 'Starting with $100 + monthly round-ups + 3% APY'
   }
 ]
 
@@ -89,22 +89,22 @@ export default function Stats() {
               Our Solution
             </h3>
             <p className="text-lg text-earth-600 mb-6">
-              Traction is the first debit card that rewards students for paying tuition, 
-              student loans, and educational expenses. We turn your biggest financial burden 
-              into your biggest opportunity.
+              Traction is the first debit card that rewards students through round-ups and points. 
+              Every purchase automatically rounds up to the nearest dollar, with Traction matching 5% of your monthly round-ups. 
+              All funds go to your FDIC-insured Tuition Vault earning 3% APY.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-earth-600 mb-2">2-5%</div>
-                <div className="text-earth-700">Cashback on Education</div>
+                <div className="text-2xl font-bold text-earth-600 mb-2">Round-Ups</div>
+                <div className="text-earth-700">Automatic spare change collection</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-earth-600 mb-2">1-3%</div>
-                <div className="text-earth-700">Cashback on Everything</div>
+                <div className="text-2xl font-bold text-earth-600 mb-2">5% Match</div>
+                <div className="text-earth-700">Traction boosts your savings</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-earth-600 mb-2">$0</div>
-                <div className="text-earth-700">Monthly Fees</div>
+                <div className="text-2xl font-bold text-earth-600 mb-2">3% APY</div>
+                <div className="text-earth-700">High-yield Tuition Vault</div>
               </div>
             </div>
           </div>

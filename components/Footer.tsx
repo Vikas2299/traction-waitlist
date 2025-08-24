@@ -17,7 +17,11 @@ export default function Footer() {
             className="md:col-span-2"
           >
             <div className="flex items-center mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-earth-600 to-earth-forest rounded-lg mr-3"></div>
+              <div className="w-8 h-8 bg-earth-600 rounded-lg mr-3 flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                </svg>
+              </div>
               <span className="text-xl font-bold">Traction</span>
             </div>
             <p className="text-earth-200 mb-6 max-w-md">

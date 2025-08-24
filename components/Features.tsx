@@ -6,38 +6,38 @@ import { CreditCard, Shield, TrendingUp, Gift, Smartphone, Users } from 'lucide-
 const features = [
   {
     icon: CreditCard,
-    title: 'Debit Card Rewards',
-    description: 'Earn points on every purchase, with bonus rewards for tuition and student loan payments.',
+    title: 'Student Debit Card',
+    description: 'No credit check required. Get started instantly with a debit card designed specifically for students.',
     color: 'from-earth-600 to-earth-700'
   },
   {
     icon: Shield,
-    title: 'No Credit Check',
-    description: 'Get started instantly without worrying about credit scores or approval processes.',
+    title: 'FDIC-Insured Vault',
+    description: 'Your Tuition Vault is a high-yield savings account held by our sponsoring bank, protected by FDIC insurance.',
     color: 'from-earth-sage to-earth-moss'
   },
   {
     icon: TrendingUp,
-    title: 'Financial Wellness',
-    description: 'Track your spending, set goals, and build healthy financial habits with our dashboard.',
+    title: 'Smart Round-Ups',
+    description: 'Automatically round up every purchase and watch Traction match 5% of your monthly round-up total.',
     color: 'from-earth-terracotta to-earth-rust'
   },
   {
     icon: Gift,
-    title: 'Flexible Redemption',
-    description: 'Redeem points for tuition relief, loan paydown, EdTech subscriptions, or cash back.',
+    title: 'Educational Rewards',
+    description: 'Earn 1.5x points on tuition, student loans, and educational expenses. Turn spending into savings.',
     color: 'from-earth-burnt to-earth-300'
   },
   {
     icon: Smartphone,
-    title: 'Mobile-First',
-    description: 'Manage your account, track rewards, and make payments all from your phone.',
+    title: 'Mobile-First Experience',
+    description: 'Track your progress, manage round-ups, and watch your Tuition Vault grow from your phone.',
     color: 'from-earth-slate to-earth-sky'
   },
   {
     icon: Users,
     title: 'Student Community',
-    description: 'Connect with other students, share tips, and access exclusive student benefits.',
+    description: 'Connect with other students, share tips, and access exclusive student benefits and resources.',
     color: 'from-earth-forest to-earth-800'
   }
 ]
@@ -85,6 +85,92 @@ export default function Features() {
           ))}
         </div>
 
+        {/* Mobile App Preview */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-20 text-center"
+        >
+          <h3 className="text-2xl font-bold text-earth-900 mb-8">
+            See Your Progress in Real-Time
+          </h3>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative inline-block">
+              {/* Phone Frame */}
+              <div className="w-72 h-[600px] bg-gray-900 rounded-[3rem] p-2 shadow-2xl">
+                <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
+                  {/* Status Bar */}
+                  <div className="h-12 bg-white flex items-center justify-between px-6 text-xs text-gray-600">
+                    <span>9:41</span>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-4 h-2 border border-gray-400 rounded-sm"></div>
+                      <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                      <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+                    </div>
+                  </div>
+                  
+                  {/* App Content */}
+                  <div className="px-4 py-2 space-y-4">
+                    {/* Header */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-6 h-6 bg-gray-200 rounded"></div>
+                      <span className="text-lg font-bold text-earth-900">Traction</span>
+                      <div className="w-6 h-6 bg-gray-200 rounded"></div>
+                    </div>
+                    
+                    {/* Tuition Vault Card */}
+                    <div className="bg-gradient-to-br from-earth-50 to-earth-100 rounded-2xl p-4 border border-earth-200">
+                      <h4 className="text-sm font-semibold text-earth-700 mb-2">Tuition Vault</h4>
+                      <div className="text-2xl font-bold text-earth-900 mb-1">$2,450.75</div>
+                      <div className="text-sm text-earth-600 mb-3">3% APY</div>
+                      <div className="w-full bg-earth-200 rounded-full h-2 mb-2">
+                        <div className="bg-earth-600 h-2 rounded-full" style={{width: '90%'}}></div>
+                      </div>
+                      <div className="text-xs text-earth-600">90% of tuition paid</div>
+                    </div>
+                    
+                    {/* This Month Card */}
+                    <div className="bg-white rounded-2xl p-4 border border-earth-200">
+                      <h4 className="text-sm font-semibold text-earth-700 mb-3">This Month</h4>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-earth-600">Round-Up</span>
+                          <span className="text-earth-900">$45.30</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-earth-600">Traction Match</span>
+                          <span className="text-earth-900">$2.27</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-earth-600">Interest</span>
+                          <span className="text-earth-900">$4.51</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Checking Account Card */}
+                    <div className="bg-white rounded-2xl p-4 border border-earth-200">
+                      <h4 className="text-sm font-semibold text-earth-700 mb-2">Checking Account</h4>
+                      <div className="text-xl font-bold text-earth-900 mb-4">$453.10</div>
+                      <div className="flex space-x-2">
+                        <button className="flex-1 bg-earth-100 text-earth-700 text-xs py-2 rounded-lg">View Transactions</button>
+                        <button className="flex-1 bg-earth-100 text-earth-700 text-xs py-2 rounded-lg">Set Goal</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-earth-sage rounded-full opacity-60"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-earth-400 rounded-full opacity-60"></div>
+            </div>
+            <p className="text-earth-600 mt-4">Track your Tuition Vault growth and manage your finances</p>
+          </div>
+        </motion.div>
+
         {/* How It Works Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,7 +183,7 @@ export default function Features() {
           <h3 className="text-2xl font-bold text-earth-900 mb-8">
             How It Works
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-earth-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-earth-700">1</span>
@@ -109,12 +195,19 @@ export default function Features() {
               <div className="w-16 h-16 bg-earth-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-earth-700">2</span>
               </div>
-              <h4 className="text-lg font-semibold text-earth-900 mb-2">Get Your Card</h4>
-              <p className="text-earth-600">Receive your Traction debit card in the mail</p>
+              <h4 className="text-lg font-semibold text-earth-900 mb-2">Stay Updated</h4>
+              <p className="text-earth-600">Receive email updates about Traction's progress</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-earth-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-earth-700">3</span>
+              </div>
+              <h4 className="text-lg font-semibold text-earth-900 mb-2">Early Access</h4>
+              <p className="text-earth-600">Receive early access to the card when available</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-earth-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-earth-700">4</span>
               </div>
               <h4 className="text-lg font-semibold text-earth-900 mb-2">Earn & Redeem</h4>
               <p className="text-earth-600">Start earning points and redeem for rewards</p>

@@ -140,8 +140,8 @@ export default function Hero() {
                 transition={{ delay: 0.3 }}
                 className="text-4xl md:text-6xl font-bold text-earth-900 leading-tight"
               >
-                The First Debit Card That{' '}
-                <span className="text-gradient">Rewards</span> Student Loan Payments
+                Turn Everyday Spending Into{' '}
+                <span className="text-gradient">Tuition Freedom</span>
               </motion.h1>
               
               <motion.p
@@ -150,8 +150,9 @@ export default function Hero() {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-earth-600 leading-relaxed"
               >
-                Earn points on tuition, student loans, and educational expenses. 
-                Turn your biggest financial burden into your biggest reward.
+                Earn rewards on tuition, student loans, and daily spending with our round-up program.
+                Your coffee just got smarter - every purchase grows your Tuition Vault. 
+                
               </motion.p>
             </div>
 
@@ -163,12 +164,12 @@ export default function Hero() {
               className="grid grid-cols-2 gap-6"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-earth-700">$1.7T</div>
-                <div className="text-sm text-earth-600">Student Loan Debt</div>
+                <div className="text-2xl font-bold text-earth-700">$15.75</div>
+                <div className="text-sm text-earth-600">Avg. Monthly Rewards</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-earth-700">44M+</div>
-                <div className="text-sm text-earth-600">Student Borrowers</div>
+                <div className="text-2xl font-bold text-earth-700">3% APY</div>
+                <div className="text-sm text-earth-600">Tuition Vault Interest</div>
               </div>
             </motion.div>
 
@@ -181,15 +182,15 @@ export default function Hero() {
             >
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-earth-sage rounded-full"></div>
-                <span className="text-earth-700">No credit check required</span>
+                <span className="text-earth-700">Round-up every purchase + 5% Traction match</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-earth-sage rounded-full"></div>
-                <span className="text-earth-700">Earn points on tuition & loan payments</span>
+                <span className="text-earth-700">1.5x points on educational expenses</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-earth-sage rounded-full"></div>
-                <span className="text-earth-700">Redeem for tuition relief & loan paydown</span>
+                <span className="text-earth-700">FDIC-insured high-yield Tuition Vault</span>
               </div>
             </motion.div>
           </motion.div>
