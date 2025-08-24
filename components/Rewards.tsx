@@ -25,7 +25,7 @@ const actionRewards = [
 
 export default function Rewards() {
   return (
-    <section id="rewards" className="py-20 bg-earth-50">
+    <section id="rewards" className="py-20 pb-0 bg-earth-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -265,7 +265,7 @@ export default function Rewards() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mb-8"
+          className="text-center mb-3"
         >
           <div className="card max-w-2xl mx-auto border-l-4 border-l-earth-terracotta">
             <div className="w-16 h-16 bg-gradient-to-br from-earth-terracotta to-earth-rust rounded-full flex items-center justify-center mx-auto mb-4">
