@@ -264,8 +264,8 @@ export default function Rewards() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mb-8"
         >
           <div className="card max-w-2xl mx-auto border-l-4 border-l-earth-terracotta">
             <div className="w-16 h-16 bg-gradient-to-br from-earth-terracotta to-earth-rust rounded-full flex items-center justify-center mx-auto mb-4">

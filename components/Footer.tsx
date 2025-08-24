@@ -69,21 +69,10 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="border-t border-earth-800 mt-12 pt-8"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-center items-center">
             <p className="text-earth-300 text-sm">
               © 2025 Traction. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-earth-300 hover:text-white text-sm transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-earth-300 hover:text-white text-sm transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-earth-300 hover:text-white text-sm transition-colors">
-                Cookie Policy
-              </a>
-            </div>
           </div>
         </motion.div>
       </div>
