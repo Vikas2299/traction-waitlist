@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-export const dynamic = 'force-dynamic'
-
+const resend = new Resend(process.env.RESEND_API_KEY)
 const FROM = process.env.RESEND_FROM_EMAIL || 'Traction <onboarding@resend.dev>'
 const REPLY_TO = process.env.RESEND_REPLY_TO_EMAIL || 'traction.rewards@gmail.com'
 
@@ -13,13 +12,6 @@ export async function POST(request: Request) {
     if (!to || !name) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
-
-    const apiKey = process.env.RESEND_API_KEY
-    if (!apiKey) {
-      return NextResponse.json({ error: 'Resend API key not configured' }, { status: 500 })
-    }
-
-    const resend = new Resend(apiKey)
 
     const { data, error } = await resend.emails.send({
       from: FROM,
