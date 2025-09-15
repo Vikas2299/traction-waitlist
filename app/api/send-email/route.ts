@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const dynamic = 'force-dynamic'
+
 const FROM = process.env.RESEND_FROM_EMAIL || 'Traction <onboarding@resend.dev>'
 const REPLY_TO = process.env.RESEND_REPLY_TO_EMAIL || 'traction.rewards@gmail.com'
 
@@ -12,6 +13,13 @@ export async function POST(request: Request) {
     if (!to || !name) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
+
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      return NextResponse.json({ error: 'Resend API key not configured' }, { status: 500 })
+    }
+
+    const resend = new Resend(apiKey)
 
     const { data, error } = await resend.emails.send({
       from: FROM,
@@ -38,7 +46,7 @@ export async function POST(request: Request) {
               <li>Points for educational expenses and smart actions</li>
             </ul>
           </div>
-          <p>Questions? Reach us at <a href="mailto:traction.rewards@gmail.com">hello@traction.com</a></p>
+          <p>Questions? Reach us at <a href="mailto:traction.rewards@gmail.com">traction.rewards@gmail.com</a></p>
         </div>
       `,
     })
