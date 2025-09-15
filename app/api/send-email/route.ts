@@ -47,7 +47,7 @@ export async function POST(request: Request) {
               <li>Points for educational expenses and smart actions</li>
             </ul>
           </div>
-          <p>Questions? Reach us at <a href="mailto:traction.rewards@gmail.com">hello@traction.com</a></p>
+          <p>Questions? Reach us at <a href="mailto:traction.rewards@gmail.com">traction.rewards@gmail.com</a></p>
         </div>
       `,
     })
