@@ -41,6 +41,22 @@ export async function addToWaitlist(data: {
     throw error
   }
 
+  // Send confirmation email via server API (Resend)
+  try {
+    const res = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ to: data.email, name: data.name })
+    })
+    if (!res.ok) {
+      const { error } = await res.json().catch(() => ({ error: 'Unknown error' }))
+      console.warn('Email API returned non-OK response:', error)
+    }
+  } catch (emailError) {
+    // Swallow email errors to not block signup
+    console.warn('Failed to trigger confirmation email:', emailError)
+  }
+
   return entry
 }
 

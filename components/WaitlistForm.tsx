@@ -143,8 +143,11 @@ export default function WaitlistForm() {
         >
           <CheckCircle className="w-12 h-12 text-earth-sage mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-earth-700 mb-2">You're on the list!</h3>
-          <p className="text-earth-600">
+          <p className="text-earth-600 mb-3">
             We'll notify you when Traction launches. Get ready to earn rewards on your student loan payments!
+          </p>
+          <p className="text-sm text-earth-500">
+            📧 Check your email for a confirmation message from us.
           </p>
         </motion.div>
       ) : (
